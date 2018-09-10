@@ -4,6 +4,7 @@ ext {
     supportLibraryVersion = '26.1.0'
     servicesVersion = '11.4.2'
     multidexVersion = '1.0.1'
+    lifecycleVersion = '1.1.0'
     dataBindingVersion = '2.3.3'
 
     // Libraries
@@ -22,6 +23,7 @@ ext {
     javaxAnnotationVersion= '10.0-b28'
     adapterRetrofitVersion= '2.0.2'
     jodaTimeVersion = '2.10'                //https://github.com/JodaOrg/joda-time
+    rx2FastAndroidNetworking = '1.0.1'      //https://github.com/amitshekhariitbhu/Fast-Android-Networking/tree/master/rx2-android-networking
 
     // Testing
     jUnitVersion = '4.12'
@@ -30,6 +32,7 @@ ext {
     mockitoVersion = '1.10.19'
     assertjVersion = '1.1.0'
     mockitoKotlinVersion = '1.6.0'
+    robolectricShadowVersion = '3.3.2'
 
     // dependencies
 
@@ -60,7 +63,9 @@ ext {
 
                             "com.github.bumptech.glide:glide:${glideVersion}",
                             "org.parceler:parceler-api:${parcelerVersion}",
-                            "joda-time:joda-time:${jodaTimeVersion}"
+                            "joda-time:joda-time:${jodaTimeVersion}",
+                            "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworking}",
+                            "android.arch.lifecycle:extensions:${lifecycleVersion}"
                     ],
                     annotationProcessor : [
                             "org.projectlombok:lombok:${lombokVersion}",
@@ -82,7 +87,9 @@ ext {
                             "org.robolectric:shadows-multidex:${robolectricVersion}",
                             "com.android.support:recyclerview-v7:${supportLibraryVersion}",
                             "com.google.dagger:dagger-android-support:${daggerVersion}",
-                            "com.nhaarman:mockito-kotlin-kt1.1:${mockitoKotlinVersion}"
+                            "com.nhaarman:mockito-kotlin-kt1.1:${mockitoKotlinVersion}",
+                            "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworking}",
+                            "org.robolectric:shadows-support-v4:${robolectricShadowVersion}"
                     ],
                     kapt : [
                             "org.parceler:parceler:${parcelerVersion}",
@@ -146,7 +153,8 @@ ext {
                             "io.reactivex.rxjava2:rxandroid:${reactiveAndroidVersion}",
                             "io.reactivex.rxjava2:rxjava:${reactiveJavaVersion}",
                             "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
-                            "org.modelmapper:modelmapper:${modelmapperVersion}"
+                            "org.modelmapper:modelmapper:${modelmapperVersion}",
+                            "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworking}",
                     ],
                     implementationTransitive : [
 
