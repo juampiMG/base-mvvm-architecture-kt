@@ -1,6 +1,7 @@
 package com.jp.app.injector.component
 
 import com.jp.app.SampleApplication
+import com.jp.app.common.BaseApplicationModule
 import com.jp.app.injector.module.InjectorModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule

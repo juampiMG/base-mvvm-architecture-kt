@@ -17,6 +17,6 @@ constructor(restServices: RestServices) : ISampleRepository {
     private var mRestServices: RestServices = restServices
 
     override fun getSamples(): Single<List<SampleDomain>> {
-        return mRestServices.getSamples().flatMap { resultEntities -> Single.just(mSampleEntityMapper!!.transform(resultEntities.data!!)) }
+        return mRestServices.getSamples().flatMap { resultEntities -> Single.just(mSampleEntityMapper.transform(resultEntities.data!!)) }
     }
 }

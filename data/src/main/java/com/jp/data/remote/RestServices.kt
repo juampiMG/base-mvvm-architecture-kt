@@ -11,9 +11,9 @@ import javax.inject.Singleton
 @Singleton
 class RestServices
 @Inject
-constructor() {
+constructor() : IRestServices{
 
-    fun getSamples(): Single<ResultSampleEntity> {
+    override fun getSamples(): Single<ResultSampleEntity> {
         return Rx2AndroidNetworking.get(Constants.BASE_URL_SAMPLES)
                 .build()
                 .getObjectSingle(ResultSampleEntity::class.java)
