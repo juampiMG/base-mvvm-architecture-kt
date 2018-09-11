@@ -23,7 +23,7 @@ import javax.inject.Inject
 abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
     private val DEFAULT_NUM_COUNT_BACK = 1
 
-    protected var mLayoutId: Int = 0
+    private var mLayoutId: Int = 0
 
     protected var mCurrentFragment: Fragment? = null
 
@@ -82,7 +82,7 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
 
     private val mRestartCountBackToExit = Runnable { mCountBackToExit = mDefaultCountBackToExit }
 
-    protected fun manageBackPressed() {
+    private fun manageBackPressed() {
         if (fragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
         }
@@ -107,7 +107,7 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
     }
 
     private fun removeCallbacks() {
-        mHandler?.removeCallbacks(mRestartCountBackToExit)
+        mHandler.removeCallbacks(mRestartCountBackToExit)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -181,7 +181,7 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
                 .setTitle(title)
-        builder.setPositiveButton(R.string.accept) { dialog, which ->
+        builder.setPositiveButton(R.string.accept) { dialog, _ ->
             if (action == actionOnError.CLOSE) {
                 finish()
             }
@@ -195,7 +195,7 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
                 .setTitle(title)
-        builder.setPositiveButton(R.string.accept) { dialog, which -> dialog.dismiss() }
+        builder.setPositiveButton(R.string.accept) { dialog, _ -> dialog.dismiss() }
 
         builder.create().show()
     }

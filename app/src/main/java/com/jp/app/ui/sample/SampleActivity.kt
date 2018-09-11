@@ -9,7 +9,7 @@ import com.jp.app.utils.NavigationUtils
 
 class SampleActivity: BaseActivity(), SampleFragment.FragmentCallback  {
 
-    val LAYOUT_ID = R.layout.sample_activity
+    private val LAYOUT_ID = R.layout.sample_activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

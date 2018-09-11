@@ -23,7 +23,7 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
     private val mCompositeDisposable: CompositeDisposable? =  CompositeDisposable()
 
     fun getContext(): Context {
-        return mApplication!!.applicationContext
+        return mApplication.applicationContext
     }
 
     // =============== IBaseViewModel ==============================================================
@@ -50,7 +50,7 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
     }
 
     fun isLoading(visibility: Boolean) {
-        mIsLoading.setValue(visibility)
+        mIsLoading.value = visibility
     }
 
     fun showErrorMessage(title: String, message: String, actionOnError: BaseActivity.actionOnError) {
@@ -58,6 +58,6 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
         showMessage.title = title
         showMessage.message = message
         showMessage.actionOnError = actionOnError
-        mShowMessage.setValue(showMessage)
+        mShowMessage.value = showMessage
     }
 }

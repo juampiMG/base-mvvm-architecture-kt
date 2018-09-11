@@ -10,38 +10,34 @@ import dagger.Provides
 
 
 @Module
-abstract class BaseActivityModule {
+object BaseActivityModule {
 
-    @Module
-    companion object {
+    @JvmStatic
+    @Provides
+    @PerActivity
+    internal fun resources(activity: Activity): Resources {
+        return activity.resources
+    }
 
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun resources(activity: Activity): Resources {
-            return activity.resources
-        }
+    @JvmStatic
+    @Provides
+    @PerActivity
+    internal fun activityExtras(activity: Activity): Bundle? {
+        return if (activity.intent != null && activity.intent.extras != null) activity.intent.extras else Bundle()
+    }
 
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun activityExtras(activity: Activity): Bundle? {
-            return if (activity.intent != null && activity.intent.extras != null) activity.intent.extras else Bundle()
-        }
+    @JvmStatic
+    @Provides
+    @PerActivity
+    internal fun baseActivity(activity: Activity): BaseActivity {
+        return activity as BaseActivity
+    }
 
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun baseActivity(activity: Activity): BaseActivity {
-            return activity as BaseActivity
-        }
-
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun activityFragmentManager(activity: Activity): FragmentManager {
-            return activity.fragmentManager
-        }
+    @JvmStatic
+    @Provides
+    @PerActivity
+    internal fun activityFragmentManager(activity: Activity): FragmentManager {
+        return activity.fragmentManager
     }
 
 }

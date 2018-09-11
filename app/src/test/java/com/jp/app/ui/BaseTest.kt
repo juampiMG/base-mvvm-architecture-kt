@@ -20,7 +20,7 @@ import org.robolectric.annotation.Config
 abstract class BaseTest {
 
     @get:Rule
-    public var mInjectMocksRule: TestRule = TestRule { base, description ->
+    var mInjectMocksRule: TestRule = TestRule { base, description ->
         MockitoAnnotations.initMocks(this@BaseTest)
         base
     }

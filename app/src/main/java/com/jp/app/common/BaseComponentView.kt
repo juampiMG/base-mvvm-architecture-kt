@@ -21,8 +21,7 @@ abstract class BaseComponentView : FrameLayout {
         init(context, attrs)
     }
 
-    protected fun init(context: Context, attrs: AttributeSet?) {
-
+    private fun init(context: Context, attrs: AttributeSet?) {
         if (!isInEditMode) {
             loadView(context)
             loadAttributes(context, attrs)

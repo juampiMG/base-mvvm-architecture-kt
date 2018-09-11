@@ -22,17 +22,16 @@ abstract class BaseFragment<TViewDataBinding : ViewDataBinding, TCallback : IBas
     @Inject
     lateinit var mCallback: TCallback
 
-    protected var mViewDataBinding: TViewDataBinding? = null
-
-    protected var mViewModel: IBaseViewModel? = null
-    protected var mRootView: View? = null
-
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
+    protected var mViewDataBinding: TViewDataBinding? = null
+
+    private var mViewModel: IBaseViewModel? = null
+    private var mRootView: View? = null
 
     private var mFragmentId: String? = null
-    protected var mLayoutId: Int = 0
+    private var mLayoutId: Int = 0
 
     // =============== HasFragmentInjector =========================================================
 
@@ -120,7 +119,7 @@ abstract class BaseFragment<TViewDataBinding : ViewDataBinding, TCallback : IBas
 
     private fun loadingSubscribe() {
         getViewModel().getIsLoading().observe(this, Observer { isLoading ->
-            if (isLoading != null && isLoading!!) {
+            if (isLoading != null && isLoading) {
                 mCallback.showLoading()
             } else {
                 mCallback.hideLoading()

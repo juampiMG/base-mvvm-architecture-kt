@@ -18,16 +18,15 @@ import com.jp.app.ui.sample.adapter.SampleAdapter
 import com.jp.app.ui.sample.viewModel.SampleViewModel
 import kotlinx.android.synthetic.main.sample_fragment.*
 
-class SampleFragment: BaseFragment<SampleFragmentBinding, SampleFragment.FragmentCallback>() {
+class SampleFragment : BaseFragment<SampleFragmentBinding, SampleFragment.FragmentCallback>() {
+
     val LAYOUT_ID = R.layout.sample_fragment
 
-    internal var mSampleViewModel: SampleViewModel? = null
-
+    private var mSampleViewModel: SampleViewModel? = null
     private var mGridLayoutManager: LinearLayoutManager? = null
     private var mAdapter: SampleAdapter? = null
 
     companion object {
-
         fun newInstance(bundle: Bundle?) = SampleFragment().apply {
             arguments = bundle ?: Bundle()
         }
@@ -52,7 +51,6 @@ class SampleFragment: BaseFragment<SampleFragmentBinding, SampleFragment.Fragmen
     }
 
 
-
     override fun onViewLoaded(savedInstanceState: Bundle?, view: View?) {
         super.onViewLoaded(savedInstanceState, view)
         setUpRecyclerView()
@@ -62,9 +60,7 @@ class SampleFragment: BaseFragment<SampleFragmentBinding, SampleFragment.Fragmen
     override fun subscribeToLiveData() {
         mSampleViewModel!!.getSamples().observe(this, Observer { samples -> mSampleViewModel!!.addSamples(samples!!) })
         mSampleViewModel!!.getSampleViewSelected().observe(this, Observer { sampleView ->
-            if (mCallback != null) {
-                mCallback.loadSampleInfo(sampleView!!)
-            }
+            mCallback.loadSampleInfo(sampleView!!)
         })
     }
 

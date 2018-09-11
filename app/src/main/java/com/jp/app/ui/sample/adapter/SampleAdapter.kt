@@ -14,11 +14,10 @@ import com.jp.app.utils.ImageHelper
 import java.util.ArrayList
 
 class SampleAdapter
-    constructor(callBack: SampleAdapterCallBack): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+constructor(callBack: SampleAdapterCallBack) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mList: MutableList<SampleView> = ArrayList()
-
-    private var mListener: SampleAdapterCallBack  = callBack
+    private var mListener: SampleAdapterCallBack = callBack
 
     interface SampleAdapterCallBack {
         fun sampleClicked(adapterPosition: Int)
@@ -45,9 +44,7 @@ class SampleAdapter
         }
 
         holder.addOnClickListener(View.OnClickListener {
-            if (mListener != null) {
-                mListener!!.sampleClicked(position)
-            }
+            mListener.sampleClicked(position)
         })
     }
 
@@ -67,11 +64,8 @@ class SampleAdapter
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var cardView: CardView = itemView.findViewById(R.id.card_view)
-
         var textView: AppCompatTextView = itemView.findViewById(R.id.sample_title)
-
         var imageView: AppCompatImageView = itemView.findViewById(R.id.sample_image)
-
 
         fun loadImage(imagePath: String) {
             val uri = Uri.parse(imagePath)
