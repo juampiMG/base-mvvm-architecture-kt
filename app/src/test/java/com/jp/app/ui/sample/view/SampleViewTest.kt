@@ -14,6 +14,7 @@ import org.junit.Before
 import org.junit.Test
 import org.robolectric.Robolectric
 import org.robolectric.shadows.ShadowDialog
+import org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startVisibleFragment
 import org.robolectric.util.FragmentTestUtil.startFragment
 
 class SampleViewTest : BaseTest() {
@@ -24,10 +25,7 @@ class SampleViewTest : BaseTest() {
     @Before
     fun setup() {
         mActivity = Robolectric.setupActivity(SampleActivity::class.java)
-
-        mFragment = mActivity!!.fragmentManager.findFragmentById(R.id.content) as SampleFragment
-
-        startFragment(mFragment as Fragment)
+        mFragment = mActivity!!.getCurrentFragment() as SampleFragment
     }
 
 
@@ -54,13 +52,11 @@ class SampleViewTest : BaseTest() {
 
     @Test
     fun checkFirstRowViewsData() {
-
         val holder = mFragment!!.getAdapter()!!.onCreateViewHolder(mFragment!!.recycler_view, 0) as SampleAdapter.ItemViewHolder
         mFragment!!.getAdapter()!!.onBindViewHolder(holder, 0)
 
         assertNotNull(holder)
         assertEquals("SampleDomain1", holder.textView.text.toString())
-
     }
 
     @Test

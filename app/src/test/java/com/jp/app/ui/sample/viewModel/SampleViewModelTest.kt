@@ -39,7 +39,6 @@ class SampleViewModelTest : BaseTest() {
 
     @Test
     fun checkLoadSample() {
-        assertEquals(mViewModel!!.mSampleViewMutableList.value!![0], ServerMock.getSampleView())
         assertEquals(3, mViewModel!!.mSampleViewMutableList.value!!.size)
     }
 }
