@@ -15,3 +15,12 @@ Butterknife
 LiveData
 
 DataBinding
+
+
+And Testing View and ViewModel
+
+JUnit
+
+Robolectric
+
+Mockito
