@@ -160,11 +160,11 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
     // =============== Generic Loading =============================================================
 
     override fun showLoading() {
-        generic_loading.visibility = View.VISIBLE
+        generic_loading?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        generic_loading.visibility = View.GONE
+        generic_loading?.visibility = View.GONE
     }
 
     // =============== ShowDialogs =================================================================
