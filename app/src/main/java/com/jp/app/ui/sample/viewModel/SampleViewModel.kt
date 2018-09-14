@@ -70,7 +70,7 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
 
                     override fun onError(code: Int, title: String, description: String) {
                         isLoading(false)
-                        showErrorMessage(title, description, BaseActivity.actionOnError.CLOSE)
+                        showErrorMessage(title, description, BaseActivity.ActionOnError.CLOSE)
                     }
                 })
     }

@@ -20,20 +20,19 @@ import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.generic_loading.*
 import javax.inject.Inject
 
-abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
+abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
     private val DEFAULT_NUM_COUNT_BACK = 1
 
     private var mLayoutId: Int = 0
 
     protected var mCurrentFragment: Fragment? = null
 
-    enum class actionOnError {
+    enum class ActionOnError {
         CLOSE, NOTHING
     }
 
     @Inject
     lateinit var mFragmentInjector: DispatchingAndroidInjector<Fragment>
-
 
     private var mCompositeDisposable: CompositeDisposable? = null
     private val mHandler = Handler()
@@ -169,7 +168,7 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
 
     // =============== ShowDialogs =================================================================
 
-    override fun showError(title: String, message: String, action: actionOnError) {
+    override fun showError(title: String, message: String, action: ActionOnError) {
         showErrorDialog(title, message, action)
     }
 
@@ -177,12 +176,12 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
         showMessageDialog(title, message)
     }
 
-    private fun showErrorDialog(title: String, message: String, action: actionOnError) {
+    private fun showErrorDialog(title: String, message: String, action: ActionOnError) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
                 .setTitle(title)
         builder.setPositiveButton(R.string.accept) { dialog, _ ->
-            if (action == actionOnError.CLOSE) {
+            if (action == ActionOnError.CLOSE) {
                 finish()
             }
             dialog.dismiss()

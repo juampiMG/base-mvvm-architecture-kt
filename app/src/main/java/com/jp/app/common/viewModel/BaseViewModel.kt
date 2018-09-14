@@ -53,7 +53,7 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
         mIsLoading.value = visibility
     }
 
-    fun showErrorMessage(title: String, message: String, actionOnError: BaseActivity.actionOnError) {
+    fun showErrorMessage(title: String, message: String, actionOnError: BaseActivity.ActionOnError) {
         val showMessage = ShowErrorMessage()
         showMessage.title = title
         showMessage.message = message

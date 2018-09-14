@@ -7,7 +7,7 @@ interface IBaseFragmentCallback {
 
     fun hideLoading()
 
-    fun showError(title: String, message: String, action: BaseActivity.actionOnError)
+    fun showError(title: String, message: String, action: BaseActivity.ActionOnError)
 
     fun showMessage(title: String, message: String)
 
