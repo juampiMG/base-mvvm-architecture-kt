@@ -1,11 +1,23 @@
 package com.jp.app.utils
 
 import android.app.Activity
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import com.jp.app.common.view.BaseFragment
 
 object NavigationUtils {
+
+    @JvmStatic
+    fun navigateToActivityAnimated(currentActivity:Activity, destActivity: Activity, enterAnim: Int, outAnim: Int) {
+        val intent = Intent(currentActivity, destActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        currentActivity.startActivity(intent)
+        currentActivity.overridePendingTransition(enterAnim, outAnim)
+    }
+
+
+
     @JvmStatic
     fun navigateToFragment(activity: Activity, supportFragmentManager: FragmentManager, fragment: Fragment, contentFrame: Int, addToBackStack: Boolean) {
         pushFragment(activity, fragment, supportFragmentManager, contentFrame, addToBackStack)

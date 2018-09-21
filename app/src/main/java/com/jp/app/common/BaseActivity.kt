@@ -1,5 +1,6 @@
 package com.jp.app.common
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +12,7 @@ import android.widget.Toast
 import com.jp.app.R
 import com.jp.app.common.view.IBaseFragmentCallback
 import com.jp.app.ui.sample.SampleActivity
+import com.jp.app.utils.NavigationUtils
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -18,6 +20,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.generic_loading.*
+import kotlinx.android.synthetic.main.sample_activity.*
 import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
@@ -55,7 +58,6 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
         AndroidInjection.inject(this)
         setUpBackPressValues()
-
     }
 
     // =============== Manage Views ================================================================
@@ -116,6 +118,9 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
         return true
     }
 
+    protected fun setUpFlipActivity(activityDes: Activity) {
+       flip_button?.setOnClickListener { v -> NavigationUtils.navigateToActivityAnimated (this, activityDes, R.anim.rotate_in, R.anim.rotate_out)}
+    }
 
     // =============== Manage Disposable ===========================================================
 

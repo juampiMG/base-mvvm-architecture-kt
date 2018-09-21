@@ -43,7 +43,7 @@ abstract class BaseComponentView : FrameLayout {
         }
     }
 
-    protected  fun bindViews() {}
+    protected abstract fun bindViews()
 
     protected abstract fun loadAttributes(context: Context, attrs: AttributeSet?)
 
