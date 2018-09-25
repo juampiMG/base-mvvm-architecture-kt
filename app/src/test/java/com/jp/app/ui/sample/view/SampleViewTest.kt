@@ -2,7 +2,7 @@ package com.jp.app.ui.sample.view
 
 import android.app.Dialog
 import com.jp.app.ui.BaseTest
-import com.jp.app.ui.sample.OptionsActivity
+import com.jp.app.ui.sample.SampleActivity
 import com.jp.app.ui.sample.adapter.SampleAdapter
 import kotlinx.android.synthetic.main.sample_fragment.*
 import org.hamcrest.Matchers.`is`
@@ -14,13 +14,13 @@ import org.robolectric.Robolectric
 import org.robolectric.shadows.ShadowDialog
 
 class SampleViewTest : BaseTest() {
-    private var mActivity: OptionsActivity? = null
+    private var mActivity: SampleActivity? = null
 
     private var mFragment: SampleFragment? = null
 
     @Before
     fun setup() {
-        mActivity = Robolectric.setupActivity(OptionsActivity::class.java)
+        mActivity = Robolectric.setupActivity(SampleActivity::class.java)
         mFragment = mActivity!!.getCurrentFragment() as SampleFragment
     }
 
