@@ -1,11 +1,11 @@
 package com.jp.app.common.viewModel
 
-import android.app.Activity
 import android.app.Application
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.os.Bundle
 import com.jp.app.common.BaseActivity
 import com.jp.app.model.ShowErrorMessage
 import io.reactivex.disposables.CompositeDisposable
@@ -23,7 +23,7 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
 
     private val mCompositeDisposable: CompositeDisposable? =  CompositeDisposable()
 
-    private val mNavigateToActivity = MutableLiveData<Activity>()
+    private val mNavigateToActivity = MutableLiveData<Pair<Class<*>, Bundle?>>()
 
     fun getContext(): Context {
         return mApplication.applicationContext
@@ -39,7 +39,7 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
         return mShowMessage
     }
 
-    override fun navigateToActivity(): LiveData<Activity> {
+    override fun navigateToActivity():  MutableLiveData<Pair<Class<*>, Bundle?>> {
         return mNavigateToActivity
     }
 
@@ -60,8 +60,9 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
         mIsLoading.value = visibility
     }
 
-    fun navigate (activity: Activity) {
-        mNavigateToActivity.value = activity
+    fun navigate (activity: Class<*>, bundle: Bundle?) {
+        val pair : Pair<Class<*>, Bundle?> = Pair(activity, bundle)
+        mNavigateToActivity.value = pair
     }
 
     fun showErrorMessage(title: String, message: String, actionOnError: BaseActivity.ActionOnError) {

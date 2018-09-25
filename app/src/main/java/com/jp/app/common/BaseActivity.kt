@@ -1,7 +1,6 @@
 package com.jp.app.common
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
@@ -38,6 +37,8 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
     @Inject
     lateinit var mFragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var mExtras: Bundle
 
     private var mCompositeDisposable: CompositeDisposable? = null
     private val mHandler = Handler()
@@ -60,11 +61,11 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
         AndroidInjection.inject(this)
         setUpBackPressValues()
-        setUpToolbar ()
+        setUpToolbar()
     }
 
     private fun setUpToolbar() {
-        if (toolbar != null )setSupportActionBar(toolbar)
+        if (toolbar != null) setSupportActionBar(toolbar)
         val actionBar = supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)
         toolbar?.setOnMenuItemClickListener { item -> onOptionsItemSelected(item) }
@@ -181,8 +182,8 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
     // =============== Load Intent =================================================================
 
-    override fun loadActivity(activity: Activity) {
-        NavigationUtils.navigateToActivity(this, activity)
+    override fun loadActivity(activity: Class<*>, bundle: Bundle?) {
+        NavigationUtils.navigateToActivity(this, activity, bundle)
     }
 
     // =============== ShowDialogs =================================================================

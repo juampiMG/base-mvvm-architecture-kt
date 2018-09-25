@@ -21,7 +21,6 @@
 
     <style name="Toolbar.Tip">
         <item name="navigationIcon">@null</item>
-
     </style>
 
     <style name="Toolbar.Sample">

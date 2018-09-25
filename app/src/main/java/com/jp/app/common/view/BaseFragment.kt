@@ -119,9 +119,9 @@ abstract class BaseFragment<TViewDataBinding : ViewDataBinding, TCallback : IBas
     }
 
     private fun navigationSubscribe() {
-        getViewModel().navigateToActivity().observe(this, Observer { activity ->
-            if (activity != null ) {
-                mCallback.loadActivity(activity)
+        getViewModel().navigateToActivity().observe(this, Observer { pair ->
+            if (pair != null ) {
+                mCallback.loadActivity(pair.first, pair.second)
             }
         })
     }

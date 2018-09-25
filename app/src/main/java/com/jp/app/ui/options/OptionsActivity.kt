@@ -6,7 +6,7 @@ import com.jp.app.common.BaseActivity
 import com.jp.app.ui.options.view.OptionsFragment
 import com.jp.app.utils.NavigationUtils
 
-class OptionsActivity: BaseActivity(), OptionsFragment.FragmentCallback  {
+class OptionsActivity : BaseActivity(), OptionsFragment.FragmentCallback {
 
     private val LAYOUT_ID = R.layout.options_activity
 
@@ -21,7 +21,7 @@ class OptionsActivity: BaseActivity(), OptionsFragment.FragmentCallback  {
 
     }
 
-     override fun getLayoutId(): Int {
+    override fun getLayoutId(): Int {
         return LAYOUT_ID
     }
 

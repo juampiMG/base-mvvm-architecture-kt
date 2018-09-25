@@ -53,7 +53,7 @@ class NavigationActivity : BaseActivity(),
     }
 
     override fun onBackPressed() {
-        NavigationUtils.navigateToActivityNotAddStack(this, OptionsActivity())
+        NavigationUtils.navigateToActivityNotAddStack(this, OptionsActivity::class.java, null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -66,7 +66,7 @@ class NavigationActivity : BaseActivity(),
         when (item.itemId) {
             android.R.id.home -> manageBackPressed()
             R.id.flip_button -> {
-                NavigationUtils.navigateToActivityAnimated (this, TipActivity(), R.anim.rotate_in, R.anim.rotate_out)
+                NavigationUtils.navigateToActivityAnimated (this, TipActivity::class.java, R.anim.rotate_in, R.anim.rotate_out)
             }
         }
         return true

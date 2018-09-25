@@ -9,7 +9,7 @@ import com.jp.app.ui.navigation.NavigationActivity
 import com.jp.app.ui.tip.view.TipFragment
 import com.jp.app.utils.NavigationUtils
 
-class TipActivity: BaseActivity(), TipFragment.FragmentCallback  {
+class TipActivity : BaseActivity(), TipFragment.FragmentCallback {
 
     private val LAYOUT_ID = R.layout.tip_activity
 
@@ -34,13 +34,13 @@ class TipActivity: BaseActivity(), TipFragment.FragmentCallback  {
         when (item.itemId) {
             android.R.id.home -> manageBackPressed()
             R.id.flip_button -> {
-                NavigationUtils.navigateToActivityAnimated (this, NavigationActivity(), R.anim.rotate_in, R.anim.rotate_out)
+                NavigationUtils.navigateToActivityAnimated(this, NavigationActivity::class.java, R.anim.rotate_in, R.anim.rotate_out)
             }
         }
         return true
     }
 
-     override fun getLayoutId(): Int {
+    override fun getLayoutId(): Int {
         return LAYOUT_ID
     }
 

@@ -1,6 +1,6 @@
 package com.jp.app.common.view
 
-import android.app.Activity
+import android.os.Bundle
 import com.jp.app.common.BaseActivity
 
 interface IBaseFragmentCallback {
@@ -12,6 +12,6 @@ interface IBaseFragmentCallback {
 
     fun showMessage(title: String, message: String)
 
-    fun loadActivity (activity: Activity)
+    fun loadActivity (activity: Class<*>, bundle: Bundle?)
 
 }
