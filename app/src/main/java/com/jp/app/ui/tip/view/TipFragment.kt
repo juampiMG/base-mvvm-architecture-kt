@@ -26,8 +26,7 @@ class TipFragment : BaseFragment<TipFragmentBinding, TipFragment.FragmentCallbac
     }
 
 
-    interface FragmentCallback : IBaseFragmentCallback {
-    }
+    interface FragmentCallback : IBaseFragmentCallback
 
     override fun getViewModel(): BaseViewModel {
         mTipViewModel = ViewModelProviders.of(this, mViewModelFactory!!).get(TipViewModel::class.java!!)
@@ -48,7 +47,7 @@ class TipFragment : BaseFragment<TipFragmentBinding, TipFragment.FragmentCallbac
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpAnimationTip ()
+        setUpAnimationTip()
     }
 
     private fun setUpAnimationTip() {

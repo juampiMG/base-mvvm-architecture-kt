@@ -13,4 +13,10 @@
 
     <color name="cyan">#35BDF2</color>
     <color name="purple">#7986cb</color>
+
+    <color name="text_primary">#4E4E4E</color>
+    <color name="red">#E53556</color>
+
+    <color name="grey_extra_light">#E7E7E7</color>
+    <color name="cyan_light">#5ED9F6</color>
 </resources>

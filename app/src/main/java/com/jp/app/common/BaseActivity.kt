@@ -1,20 +1,18 @@
 package com.jp.app.common
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.jp.app.R
 import com.jp.app.common.view.IBaseFragmentCallback
-import com.jp.app.ui.navigation.NavigationActivity
-import com.jp.app.ui.sample.SampleActivity
-import com.jp.app.ui.tip.TipActivity
+import com.jp.app.ui.options.OptionsActivity
 import com.jp.app.utils.NavigationUtils
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -96,11 +94,12 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
     private val mRestartCountBackToExit = Runnable { mCountBackToExit = mDefaultCountBackToExit }
 
-    private fun manageBackPressed() {
+    @SuppressLint("ShowToast")
+    protected fun manageBackPressed() {
         if (fragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
         }
-        if (this is SampleActivity) {
+        if (this is OptionsActivity) {
             if (mExitToast == null) {
                 mExitToast = Toast.makeText(this, getString(R.string.count_back_exit_message), Toast.LENGTH_SHORT)
             }
@@ -124,25 +123,11 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
         mHandler.removeCallbacks(mRestartCountBackToExit)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.sample_menu, menu)
-        return true
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> manageBackPressed()
-            R.id.flip_button -> {
-                (this as? TipActivity)?.setUpFlipActivity(NavigationActivity())
-                (this as? NavigationActivity)?.setUpFlipActivity(TipActivity())
-            }
         }
         return true
-    }
-
-    protected fun setUpFlipActivity(activityDes: Activity) {
-        NavigationUtils.navigateToActivityAnimated (this, activityDes, R.anim.rotate_in, R.anim.rotate_out)
     }
 
     // =============== Manage Disposable ===========================================================
@@ -192,6 +177,12 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
     override fun hideLoading() {
         generic_loading?.visibility = View.GONE
+    }
+
+    // =============== Load Intent =================================================================
+
+    override fun loadActivity(activity: Activity) {
+        NavigationUtils.navigateToActivity(this, activity)
     }
 
     // =============== ShowDialogs =================================================================

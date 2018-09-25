@@ -114,7 +114,16 @@ abstract class BaseFragment<TViewDataBinding : ViewDataBinding, TCallback : IBas
     private fun subscribers() {
         loadingSubscribe()
         errorMessageSubscribe()
+        navigationSubscribe ()
         subscribeToLiveData()
+    }
+
+    private fun navigationSubscribe() {
+        getViewModel().navigateToActivity().observe(this, Observer { activity ->
+            if (activity != null ) {
+                mCallback.loadActivity(activity)
+            }
+        })
     }
 
     private fun loadingSubscribe() {

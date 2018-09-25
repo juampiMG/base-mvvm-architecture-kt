@@ -5,6 +5,4 @@ import javax.inject.Inject
 
 class TipViewModel
 @Inject
-constructor() : BaseViewModel(), ITipViewModel {
-
-}
+constructor() : BaseViewModel(), ITipViewModel

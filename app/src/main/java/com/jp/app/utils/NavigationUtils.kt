@@ -9,6 +9,20 @@ import com.jp.app.common.view.BaseFragment
 object NavigationUtils {
 
     @JvmStatic
+    fun navigateToActivity(currentActivity:Activity,  destActivity: Activity) {
+        val intent = Intent(currentActivity, destActivity::class.java)
+        currentActivity.startActivity(intent)
+    }
+
+    @JvmStatic
+    fun navigateToActivityNotAddStack(currentActivity:Activity,  destActivity: Activity) {
+        val intent = Intent(currentActivity, destActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        currentActivity.startActivity(intent)
+    }
+
+
+    @JvmStatic
     fun navigateToActivityAnimated(currentActivity:Activity, destActivity: Activity, enterAnim: Int, outAnim: Int) {
         val intent = Intent(currentActivity, destActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
