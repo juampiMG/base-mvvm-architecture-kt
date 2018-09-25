@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.jp.app.R
 import com.jp.app.common.view.IBaseFragmentCallback
+import com.jp.app.ui.navigation.NavigationActivity
 import com.jp.app.ui.sample.SampleActivity
 import com.jp.app.utils.NavigationUtils
 import dagger.android.AndroidInjection
@@ -20,8 +22,9 @@ import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.generic_loading.*
-import kotlinx.android.synthetic.main.sample_activity.*
+import kotlinx.android.synthetic.main.toolbar_view.*
 import javax.inject.Inject
+
 
 abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
     private val DEFAULT_NUM_COUNT_BACK = 1
@@ -58,6 +61,15 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
         AndroidInjection.inject(this)
         setUpBackPressValues()
+        setUpToolbar ()
+    }
+
+    private fun setUpToolbar() {
+        if (toolbar != null )setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        actionBar?.setDisplayShowTitleEnabled(false)
+        toolbar?.setOnMenuItemClickListener { item -> onOptionsItemSelected(item) }
+        toolbar?.setNavigationOnClickListener { onBackPressed() }
     }
 
     // =============== Manage Views ================================================================
@@ -111,15 +123,25 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
         mHandler.removeCallbacks(mRestartCountBackToExit)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.sample_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> manageBackPressed()
+            R.id.flip_button -> {
+                (this as? SampleActivity)?.setUpFlipActivity(NavigationActivity())
+                (this as? NavigationActivity)?.setUpFlipActivity(SampleActivity())
+            }
         }
         return true
     }
 
     protected fun setUpFlipActivity(activityDes: Activity) {
-       flip_button?.setOnClickListener { v -> NavigationUtils.navigateToActivityAnimated (this, activityDes, R.anim.rotate_in, R.anim.rotate_out)}
+        NavigationUtils.navigateToActivityAnimated (this, activityDes, R.anim.rotate_in, R.anim.rotate_out)
     }
 
     // =============== Manage Disposable ===========================================================

@@ -7,7 +7,6 @@ import com.jp.app.common.BaseActivity
 import com.jp.app.components.BottomBarView
 import com.jp.app.ui.navigation.adapter.BottomBarTabsAdapter
 import com.jp.app.ui.navigation.view.*
-import com.jp.app.ui.sample.SampleActivity
 import com.jp.app.utils.NavigationUtils
 import kotlinx.android.synthetic.main.navigation_activity.*
 
@@ -32,7 +31,6 @@ class NavigationActivity : BaseActivity(),
         } else {
             mCurrentFragment = supportFragmentManager.findFragmentById(R.id.view_pager)
         }
-        setUpFlipActivity(SampleActivity())
     }
 
     override fun onStart() {

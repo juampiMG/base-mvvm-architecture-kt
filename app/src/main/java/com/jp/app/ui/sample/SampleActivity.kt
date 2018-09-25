@@ -4,7 +4,6 @@ import android.os.Bundle
 import com.jp.app.R
 import com.jp.app.common.BaseActivity
 import com.jp.app.model.SampleView
-import com.jp.app.ui.navigation.NavigationActivity
 import com.jp.app.ui.sample.view.SampleFragment
 import com.jp.app.utils.NavigationUtils
 
@@ -21,7 +20,6 @@ class SampleActivity: BaseActivity(), SampleFragment.FragmentCallback  {
             mCurrentFragment = supportFragmentManager.findFragmentById(R.id.content)
         }
 
-        setUpFlipActivity(NavigationActivity())
     }
 
      override fun getLayoutId(): Int {
