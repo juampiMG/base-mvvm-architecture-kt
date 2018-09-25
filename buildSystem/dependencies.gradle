@@ -1,7 +1,7 @@
 ext {
 
     // Android dependencies
-    supportLibraryVersion = '26.1.0'
+    supportLibraryVersion = '27.1.0'
     servicesVersion = '11.4.2'
     multidexVersion = '1.0.1'
     lifecycleVersion = '1.1.0'
@@ -24,6 +24,7 @@ ext {
     adapterRetrofitVersion= '2.0.2'
     jodaTimeVersion = '2.10'                //https://github.com/JodaOrg/joda-time
     rx2FastAndroidNetworking = '1.0.1'      //https://github.com/amitshekhariitbhu/Fast-Android-Networking/tree/master/rx2-android-networking
+    lottieVersion = '2.7.0'                 //https://github.com/airbnb/lottie-android
 
     // Testing
     jUnitVersion = '4.12'
@@ -65,7 +66,8 @@ ext {
                             "org.parceler:parceler-api:${parcelerVersion}",
                             "joda-time:joda-time:${jodaTimeVersion}",
                             "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworking}",
-                            "android.arch.lifecycle:extensions:${lifecycleVersion}"
+                            "android.arch.lifecycle:extensions:${lifecycleVersion}",
+                            "com.airbnb.android:lottie:${lottieVersion}"
                     ],
                     annotationProcessor : [
                             "org.projectlombok:lombok:${lombokVersion}",

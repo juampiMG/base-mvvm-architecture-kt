@@ -5,6 +5,8 @@ import com.jp.app.ui.navigation.NavigationActivity
 import com.jp.app.ui.navigation.NavigationActivityModule
 import com.jp.app.ui.sample.SampleActivity
 import com.jp.app.ui.sample.SampleActivityModule
+import com.jp.app.ui.tip.TipActivity
+import com.jp.app.ui.tip.TipActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -17,5 +19,9 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [NavigationActivityModule::class])
     internal abstract fun navigationActivity(): NavigationActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [TipActivityModule::class])
+    internal abstract fun tipActivity(): TipActivity
 
 }

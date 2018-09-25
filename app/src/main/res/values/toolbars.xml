@@ -19,7 +19,8 @@
 
     </style>
 
-    <style name="Toolbar.Home">
+    <style name="Toolbar.Tip">
+        <item name="navigationIcon">@null</item>
 
     </style>
 

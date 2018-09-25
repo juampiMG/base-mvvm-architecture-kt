@@ -14,6 +14,7 @@ import com.jp.app.R
 import com.jp.app.common.view.IBaseFragmentCallback
 import com.jp.app.ui.navigation.NavigationActivity
 import com.jp.app.ui.sample.SampleActivity
+import com.jp.app.ui.tip.TipActivity
 import com.jp.app.utils.NavigationUtils
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -133,8 +134,8 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
         when (item.itemId) {
             android.R.id.home -> manageBackPressed()
             R.id.flip_button -> {
-                (this as? SampleActivity)?.setUpFlipActivity(NavigationActivity())
-                (this as? NavigationActivity)?.setUpFlipActivity(SampleActivity())
+                (this as? TipActivity)?.setUpFlipActivity(NavigationActivity())
+                (this as? NavigationActivity)?.setUpFlipActivity(TipActivity())
             }
         }
         return true

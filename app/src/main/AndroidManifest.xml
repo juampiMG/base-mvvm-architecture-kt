@@ -25,6 +25,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.tip.TipActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
 
     </application>
 </manifest>
