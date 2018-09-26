@@ -31,7 +31,7 @@ class NavFragment2 : BaseFragment<NavTwoFragmentBinding, NavFragment2.FragmentCa
     }
 
     override fun getViewModel(): IBaseViewModel {
-        mNavViewModel = ViewModelProviders.of(this, mViewModelFactory!!).get(NavViewModel::class.java!!)
+        mNavViewModel = ViewModelProviders.of(this, mViewModelFactory).get(NavViewModel::class.java)
         mNavViewModel!!.isLoading(false)
         return mNavViewModel as NavViewModel
     }

@@ -27,7 +27,7 @@ class OptionsFragment : BaseFragment<OptionsFragmentBinding, OptionsFragment.Fra
     interface FragmentCallback : IBaseFragmentCallback
 
     override fun getViewModel(): BaseViewModel {
-        mOptionViewModel = ViewModelProviders.of(this, mViewModelFactory!!).get(OptionsViewModel::class.java!!)
+        mOptionViewModel = ViewModelProviders.of(this, mViewModelFactory).get(OptionsViewModel::class.java)
         return mOptionViewModel as OptionsViewModel
     }
 

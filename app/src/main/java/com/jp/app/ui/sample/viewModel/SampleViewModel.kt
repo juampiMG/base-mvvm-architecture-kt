@@ -64,7 +64,7 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
                         isLoading(false)
                         if (sample != null) {
                             mSampleDomain = sample
-                            mSampleViewMutableList.setValue(mSampleViewMapper.transform(sample))
+                            mSampleViewMutableList.value = mSampleViewMapper.transform(sample)
                         }
                     }
 

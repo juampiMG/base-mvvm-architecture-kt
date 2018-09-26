@@ -29,7 +29,7 @@ class TipFragment : BaseFragment<TipFragmentBinding, TipFragment.FragmentCallbac
     interface FragmentCallback : IBaseFragmentCallback
 
     override fun getViewModel(): BaseViewModel {
-        mTipViewModel = ViewModelProviders.of(this, mViewModelFactory!!).get(TipViewModel::class.java!!)
+        mTipViewModel = ViewModelProviders.of(this, mViewModelFactory).get(TipViewModel::class.java)
         return mTipViewModel as TipViewModel
     }
 

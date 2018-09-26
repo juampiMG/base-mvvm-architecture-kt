@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.jp.app.BR
 import com.jp.app.R
@@ -38,7 +37,7 @@ class SampleFragment : BaseFragment<SampleFragmentBinding, SampleFragment.Fragme
     }
 
     override fun getViewModel(): BaseViewModel {
-        mSampleViewModel = ViewModelProviders.of(this, mViewModelFactory!!).get(SampleViewModel::class.java!!)
+        mSampleViewModel = ViewModelProviders.of(this, mViewModelFactory).get(SampleViewModel::class.java)
         return mSampleViewModel as SampleViewModel
     }
 
