@@ -57,7 +57,6 @@ class SampleFragment : BaseFragment<SampleFragmentBinding, SampleFragment.Fragme
     }
 
     override fun subscribeToLiveData() {
-        mSampleViewModel!!.getSamples().observe(this, Observer { samples -> mSampleViewModel!!.addSamples(samples!!) })
         mSampleViewModel!!.getSampleViewSelected().observe(this, Observer { sampleView ->
             mCallback.loadSampleInfo(sampleView!!)
         })

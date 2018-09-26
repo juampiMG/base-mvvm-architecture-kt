@@ -12,7 +12,7 @@ ext {
     reactiveJavaVersion = '2.1.0'           // https://github.com/ReactiveX/RxAndroid
     retrofitVersion = '2.3.0'               // https://github.com/square/retrofit
     okHttpVersion = '3.8.1'                 // https://github.com/square/okhttp
-    glideVersion = '4.1.1'                  // https://github.com/bumptech/glide
+    glideVersion = '4.8.0'                  // https://github.com/bumptech/glide
     lombokVersion = '1.16.10'               // https://projectlombok.org/setup/android.html
     parcelerVersion = '1.1.8'               // https://github.com/johncarl81/parceler
     daggerVersion = '2.15'                  // https://github.com/square/dagger

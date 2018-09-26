@@ -37,15 +37,11 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
         mSampleViewSelected.value = mSampleViewObservableArrayList[adapterPosition]
     }
 
-    override fun getSamples(): MutableLiveData<List<SampleView>> {
-        return mSampleViewMutableList
-    }
-
     fun getSampleViewSelected(): MutableLiveData<SampleView> {
         return mSampleViewSelected
     }
 
-    override fun addSamples(samples: List<SampleView>) {
+    fun addSamples(samples: List<SampleView>) {
         mSampleViewObservableArrayList.clear()
         mSampleViewObservableArrayList.addAll(samples)
     }
@@ -64,7 +60,7 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
                         isLoading(false)
                         if (sample != null) {
                             mSampleDomain = sample
-                            mSampleViewMutableList.value = mSampleViewMapper.transform(sample)
+                            addSamples(mSampleViewMapper.transform(sample))
                         }
                     }
 
