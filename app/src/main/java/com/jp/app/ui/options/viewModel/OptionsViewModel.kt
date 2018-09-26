@@ -1,6 +1,7 @@
 package com.jp.app.ui.options.viewModel
 
 import android.os.Bundle
+import android.view.View
 import com.jp.app.common.viewModel.BaseViewModel
 import com.jp.app.ui.navigation.NavigationActivity
 import com.jp.app.ui.sample.SampleActivity
@@ -12,13 +13,13 @@ class OptionsViewModel
 constructor() : BaseViewModel(), IOptionsViewModel {
 
 
-    fun onClickSample() {
+    fun onClickSample(view : View) {
         val bundle = Bundle()
         bundle.putCharSequence(OPTIONS_TEST_BUNDLE, "SPEEDRUN")
         navigate(SampleActivity::class.java, bundle)
     }
 
-    fun onClickNavigation() {
+    fun onClickNavigation(view : View) {
         navigate(NavigationActivity::class.java, null)
     }
 }
