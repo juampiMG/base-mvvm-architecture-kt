@@ -24,8 +24,6 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
     @Inject
     lateinit var mSampleViewMapper: SampleViewMapper
 
-    val mSampleViewMutableList: MutableLiveData<List<SampleView>> = MutableLiveData()
-
     private val mSampleViewSelected = MutableLiveData<SampleView>()
 
     val mSampleViewObservableArrayList: ObservableList<SampleView> = ObservableArrayList()

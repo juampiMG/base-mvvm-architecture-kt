@@ -38,6 +38,6 @@ class SampleViewModelTest : BaseTest() {
 
     @Test
     fun checkLoadSample() {
-        assertEquals(3, mViewModel!!.mSampleViewMutableList.value!!.size)
+        assertEquals(3, mViewModel!!.mSampleViewObservableArrayList.size)
     }
 }
