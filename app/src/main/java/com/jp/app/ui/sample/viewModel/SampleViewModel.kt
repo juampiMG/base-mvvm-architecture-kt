@@ -28,9 +28,6 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
 
     val mSampleViewObservableArrayList: ObservableList<SampleView> = ObservableArrayList()
 
-    internal var mSampleDomain: List<SampleDomain> = ArrayList()
-
-
     override fun sampleClicked(adapterPosition: Int) {
         mSampleViewSelected.value = mSampleViewObservableArrayList[adapterPosition]
     }
@@ -57,7 +54,6 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
                     override fun onSuccess(sample: List<SampleDomain>) {
                         isLoading(false)
                         if (sample != null) {
-                            mSampleDomain = sample
                             addSamples(mSampleViewMapper.transform(sample))
                         }
                     }
