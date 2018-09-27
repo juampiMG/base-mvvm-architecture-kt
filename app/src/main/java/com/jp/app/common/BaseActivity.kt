@@ -1,5 +1,6 @@
 package com.jp.app.common
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +11,8 @@ import android.view.View
 import android.widget.Toast
 import com.jp.app.R
 import com.jp.app.common.view.IBaseFragmentCallback
-import com.jp.app.ui.sample.SampleActivity
+import com.jp.app.ui.options.OptionsActivity
+import com.jp.app.utils.NavigationUtils
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -18,22 +20,25 @@ import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.generic_loading.*
+import kotlinx.android.synthetic.main.toolbar_view.*
 import javax.inject.Inject
 
-abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
+
+abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, IBaseFragmentCallback {
     private val DEFAULT_NUM_COUNT_BACK = 1
 
     private var mLayoutId: Int = 0
 
     protected var mCurrentFragment: Fragment? = null
 
-    enum class actionOnError {
+    enum class ActionOnError {
         CLOSE, NOTHING
     }
 
     @Inject
     lateinit var mFragmentInjector: DispatchingAndroidInjector<Fragment>
-
+    @Inject
+    lateinit var mExtras: Bundle
 
     private var mCompositeDisposable: CompositeDisposable? = null
     private val mHandler = Handler()
@@ -56,7 +61,15 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
 
         AndroidInjection.inject(this)
         setUpBackPressValues()
+        setUpToolbar()
+    }
 
+    private fun setUpToolbar() {
+        if (toolbar != null) setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        actionBar?.setDisplayShowTitleEnabled(false)
+        toolbar?.setOnMenuItemClickListener { item -> onOptionsItemSelected(item) }
+        toolbar?.setNavigationOnClickListener { onBackPressed() }
     }
 
     // =============== Manage Views ================================================================
@@ -82,11 +95,12 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
 
     private val mRestartCountBackToExit = Runnable { mCountBackToExit = mDefaultCountBackToExit }
 
-    private fun manageBackPressed() {
+    @SuppressLint("ShowToast")
+    protected fun manageBackPressed() {
         if (fragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
         }
-        if (this is SampleActivity) {
+        if (this is OptionsActivity) {
             if (mExitToast == null) {
                 mExitToast = Toast.makeText(this, getString(R.string.count_back_exit_message), Toast.LENGTH_SHORT)
             }
@@ -116,7 +130,6 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
         }
         return true
     }
-
 
     // =============== Manage Disposable ===========================================================
 
@@ -167,9 +180,15 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
         generic_loading?.visibility = View.GONE
     }
 
+    // =============== Load Intent =================================================================
+
+    override fun loadActivity(activity: Class<*>, bundle: Bundle?) {
+        NavigationUtils.navigateToActivity(this, activity, bundle)
+    }
+
     // =============== ShowDialogs =================================================================
 
-    override fun showError(title: String, message: String, action: actionOnError) {
+    override fun showError(title: String, message: String, action: ActionOnError) {
         showErrorDialog(title, message, action)
     }
 
@@ -177,12 +196,12 @@ abstract class BaseActivity: AppCompatActivity(), HasSupportFragmentInjector, IB
         showMessageDialog(title, message)
     }
 
-    private fun showErrorDialog(title: String, message: String, action: actionOnError) {
+    private fun showErrorDialog(title: String, message: String, action: ActionOnError) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
                 .setTitle(title)
         builder.setPositiveButton(R.string.accept) { dialog, _ ->
-            if (action == actionOnError.CLOSE) {
+            if (action == ActionOnError.CLOSE) {
                 finish()
             }
             dialog.dismiss()

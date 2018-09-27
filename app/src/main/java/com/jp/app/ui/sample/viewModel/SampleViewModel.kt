@@ -24,28 +24,19 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
     @Inject
     lateinit var mSampleViewMapper: SampleViewMapper
 
-    val mSampleViewMutableList: MutableLiveData<List<SampleView>> = MutableLiveData()
-
     private val mSampleViewSelected = MutableLiveData<SampleView>()
 
     val mSampleViewObservableArrayList: ObservableList<SampleView> = ObservableArrayList()
 
-    internal var mSampleDomain: List<SampleDomain> = ArrayList()
-
-
     override fun sampleClicked(adapterPosition: Int) {
         mSampleViewSelected.value = mSampleViewObservableArrayList[adapterPosition]
-    }
-
-    override fun getSamples(): MutableLiveData<List<SampleView>> {
-        return mSampleViewMutableList
     }
 
     fun getSampleViewSelected(): MutableLiveData<SampleView> {
         return mSampleViewSelected
     }
 
-    override fun addSamples(samples: List<SampleView>) {
+    fun addSamples(samples: List<SampleView>) {
         mSampleViewObservableArrayList.clear()
         mSampleViewObservableArrayList.addAll(samples)
     }
@@ -63,14 +54,13 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
                     override fun onSuccess(sample: List<SampleDomain>) {
                         isLoading(false)
                         if (sample != null) {
-                            mSampleDomain = sample
-                            mSampleViewMutableList.setValue(mSampleViewMapper.transform(sample))
+                            addSamples(mSampleViewMapper.transform(sample))
                         }
                     }
 
                     override fun onError(code: Int, title: String, description: String) {
                         isLoading(false)
-                        showErrorMessage(title, description, BaseActivity.actionOnError.CLOSE)
+                        showErrorMessage(title, description, BaseActivity.ActionOnError.CLOSE)
                     }
                 })
     }

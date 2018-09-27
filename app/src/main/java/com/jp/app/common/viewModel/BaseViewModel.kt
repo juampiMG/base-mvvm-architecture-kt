@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.os.Bundle
 import com.jp.app.common.BaseActivity
 import com.jp.app.model.ShowErrorMessage
 import io.reactivex.disposables.CompositeDisposable
@@ -22,6 +23,8 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
 
     private val mCompositeDisposable: CompositeDisposable? =  CompositeDisposable()
 
+    private val mNavigateToActivity = MutableLiveData<Pair<Class<*>, Bundle?>>()
+
     fun getContext(): Context {
         return mApplication.applicationContext
     }
@@ -34,6 +37,10 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
 
     override fun showErrorMessage(): LiveData<ShowErrorMessage> {
         return mShowMessage
+    }
+
+    override fun navigateToActivity():  MutableLiveData<Pair<Class<*>, Bundle?>> {
+        return mNavigateToActivity
     }
 
     // =============== CompositeDispoable ==========================================================
@@ -53,7 +60,12 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
         mIsLoading.value = visibility
     }
 
-    fun showErrorMessage(title: String, message: String, actionOnError: BaseActivity.actionOnError) {
+    fun navigate (activity: Class<*>, bundle: Bundle?) {
+        val pair : Pair<Class<*>, Bundle?> = Pair(activity, bundle)
+        mNavigateToActivity.value = pair
+    }
+
+    fun showErrorMessage(title: String, message: String, actionOnError: BaseActivity.ActionOnError) {
         val showMessage = ShowErrorMessage()
         showMessage.title = title
         showMessage.message = message

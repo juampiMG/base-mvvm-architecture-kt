@@ -3,7 +3,6 @@ package com.jp.app.ui.sample.viewModel
 import com.jp.app.ui.BaseTest
 import com.jp.app.ui.sample.SampleActivity
 import com.jp.app.ui.sample.view.SampleFragment
-import com.jp.data.ServerMock
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import org.junit.Before
@@ -39,6 +38,6 @@ class SampleViewModelTest : BaseTest() {
 
     @Test
     fun checkLoadSample() {
-        assertEquals(3, mViewModel!!.mSampleViewMutableList.value!!.size)
+        assertEquals(3, mViewModel!!.mSampleViewObservableArrayList.size)
     }
 }

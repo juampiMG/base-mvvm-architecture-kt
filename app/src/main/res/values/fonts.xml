@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CodeFont">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/asap_regular</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="autoSizeStepGranularity">2sp</item>
+        <item name="android:textColorLink">@color/text_primary</item>
+    </style>
+
+
+    <style name="CodeFont.Medium">
+        <item name="android:textSize">16sp</item>
+        <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeMaxTextSize">16sp</item>
+    </style>
+
+    <style name="CodeFont.Medium.Bold">
+        <item name="android:fontFamily">@font/asap_bold</item>
+    </style>
+</resources>

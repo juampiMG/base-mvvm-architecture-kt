@@ -13,12 +13,28 @@
         <activity
             android:name=".ui.sample.SampleActivity"
             android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".ui.navigation.NavigationActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".ui.tip.TipActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".ui.options.OptionsActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
     </application>
 </manifest>

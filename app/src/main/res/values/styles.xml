@@ -27,5 +27,16 @@
 
     </style>
 
+    <style name="GeneralTipWhiteBigText" parent="android:Widget.TextView">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GeneralTipWhiteText" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 
 </resources>
