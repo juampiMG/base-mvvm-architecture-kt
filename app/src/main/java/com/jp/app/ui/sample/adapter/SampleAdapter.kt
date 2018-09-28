@@ -26,8 +26,7 @@ constructor(callBack: SampleAdapterCallBack) : RecyclerView.Adapter<RecyclerView
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val sample = mList[position]
-        drawGame(holder as GameImageViewHolder, sample)
+        drawGame(holder as GameImageViewHolder,  mList[position])
     }
 
     private fun drawGame(holder: GameImageViewHolder, sample: SampleView) {

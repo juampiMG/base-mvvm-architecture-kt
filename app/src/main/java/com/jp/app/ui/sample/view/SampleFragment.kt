@@ -68,10 +68,9 @@ class SampleFragment : BaseFragment<SampleFragmentBinding, SampleFragment.Fragme
 
     private fun setUpRecyclerView() {
         mGridLayoutManager = GridLayoutManager(activity, 3)
-        mViewDataBinding!!.recyclerView.layoutManager = mGridLayoutManager
         recycler_view.layoutManager = mGridLayoutManager
         mAdapter = SampleAdapter(mSampleViewModel!!)
-        mViewDataBinding!!.recyclerView.adapter = mAdapter
+        recycler_view.adapter = mAdapter
     }
 
     fun getAdapter(): SampleAdapter? {

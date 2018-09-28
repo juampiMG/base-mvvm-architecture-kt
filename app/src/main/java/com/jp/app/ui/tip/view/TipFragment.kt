@@ -41,9 +41,7 @@ class TipFragment : BaseFragment<TipFragmentBinding, TipFragment.FragmentCallbac
         return BR.viewModel
     }
 
-    override fun subscribeToLiveData() {
-
-    }
+    override fun subscribeToLiveData() {}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,7 +49,7 @@ class TipFragment : BaseFragment<TipFragmentBinding, TipFragment.FragmentCallbac
     }
 
     private fun setUpAnimationTip() {
-        animation_view.setAnimation(R.raw.sd_anim_light_bulb);
+        animation_view.setAnimation(R.raw.sd_anim_light_bulb)
     }
 
 }
