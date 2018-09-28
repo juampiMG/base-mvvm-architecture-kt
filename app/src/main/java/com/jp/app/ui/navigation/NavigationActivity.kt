@@ -35,10 +35,6 @@ class NavigationActivity : BaseActivity(),
         } else {
             mCurrentFragment = supportFragmentManager.findFragmentById(R.id.view_pager)
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
         setUpViewPager()
     }
 
@@ -72,7 +68,7 @@ class NavigationActivity : BaseActivity(),
         return true
     }
 
-    fun setUpViewPager() {
+    private fun setUpViewPager() {
         mAdapter = BottomBarTabsAdapter(supportFragmentManager, 5)
         view_pager.adapter = mAdapter
         view_pager.addOnPageChangeListener(onPageChangeListener)
