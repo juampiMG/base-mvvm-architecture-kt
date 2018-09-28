@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jp.app.model.SampleView
 import com.jp.app.ui.sample.adapter.SampleAdapter
 
@@ -23,7 +24,9 @@ object BindingUtils {
     @JvmStatic
     @BindingAdapter("imageUrl")
     fun setImageUrl(imageView: ImageView, url: String) {
-        val context = imageView.context
-        Glide.with(context).load(url).into(imageView)
+        val requestBuilder = Glide.with(imageView.context)
+                .load(url)
+                .transition(DrawableTransitionOptions.withCrossFade())
+        requestBuilder.into(imageView)
     }
 }
