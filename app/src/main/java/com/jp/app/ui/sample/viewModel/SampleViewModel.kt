@@ -53,9 +53,7 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
 
                     override fun onSuccess(sample: List<SampleDomain>) {
                         isLoading(false)
-                        if (sample != null) {
-                            addSamples(mSampleViewMapper.transform(sample))
-                        }
+                        addSamples(mSampleViewMapper.transform(sample))
                     }
 
                     override fun onError(code: Int, title: String, description: String) {
