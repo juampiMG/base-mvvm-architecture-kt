@@ -16,6 +16,8 @@ LiveData
 
 DataBinding
 
+Lottie
+
 
 And Testing View and ViewModel
 
