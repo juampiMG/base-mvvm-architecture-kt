@@ -25,12 +25,8 @@ class SampleActivity: BaseActivity(), SampleFragment.FragmentCallback  {
         }
 
         mTitle = mExtras.getString(Constants.OPTIONS_TEST_BUNDLE)
-
-    }
-
-    override fun onStart() {
-        super.onStart()
         setViews()
+
     }
 
     private fun setViews() {
