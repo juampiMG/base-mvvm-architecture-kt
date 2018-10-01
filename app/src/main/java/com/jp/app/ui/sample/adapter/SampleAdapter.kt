@@ -59,6 +59,11 @@ constructor(callBack: SampleAdapterCallBack) : RecyclerView.Adapter<RecyclerView
         fun gamePressed() {
             mListener.sampleClicked(adapterPosition)
         }
+
+        @VisibleForTesting(otherwise = VisibleForTesting.NONE)
+        fun getSampleComponentBinding(): SampleComponentBinding {
+            return mSampleComponentBinding
+        }
     }
 
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
