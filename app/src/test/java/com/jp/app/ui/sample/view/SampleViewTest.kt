@@ -1,12 +1,16 @@
 package com.jp.app.ui.sample.view
 
+import android.app.Dialog
 import com.jp.app.ui.BaseTest
 import com.jp.app.ui.sample.SampleActivity
 import kotlinx.android.synthetic.main.sample_fragment.*
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.notNullValue
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.robolectric.Robolectric
+import org.robolectric.shadows.ShadowDialog
 
 class SampleViewTest : BaseTest() {
     private var mActivity: SampleActivity? = null
@@ -43,10 +47,9 @@ class SampleViewTest : BaseTest() {
 
     @Test
     fun checkOnClickFirstRowData() {
-     //   mFragment!!.recycler_view.getChildAt(0).performClick()
-     //   val dialog = ShadowDialog.getLatestDialog()
-     //   assertThat<Dialog>("The dialog should be displayed", dialog, `is`<Any>(notNullValue()))
-        assertTrue(true)
+        mFragment!!.getAdapter()!!.getSampleAdapterCallBack()!!.sampleClicked(0)
+        val dialog = ShadowDialog.getLatestDialog()
+        assertThat<Dialog>("The dialog should be displayed", dialog, `is`<Any>(notNullValue()))
     }
 
 }

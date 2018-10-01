@@ -1,5 +1,6 @@
 package com.jp.app.ui.sample.adapter
 
+import android.support.annotation.VisibleForTesting
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -58,6 +59,11 @@ constructor(callBack: SampleAdapterCallBack) : RecyclerView.Adapter<RecyclerView
         fun gamePressed() {
             mListener.sampleClicked(adapterPosition)
         }
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
+    fun getSampleAdapterCallBack(): SampleAdapterCallBack? {
+        return mListener
     }
 
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
+import android.support.annotation.VisibleForTesting
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
@@ -76,6 +77,8 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector, I
 
     abstract fun getLayoutId(): Int
 
+
+    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
     fun getCurrentFragment(): Fragment? {
         return mCurrentFragment
     }

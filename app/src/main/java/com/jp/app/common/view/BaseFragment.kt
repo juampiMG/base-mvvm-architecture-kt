@@ -9,6 +9,7 @@ import android.databinding.ViewDataBinding
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.annotation.VisibleForTesting
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ abstract class BaseFragment<TViewDataBinding : ViewDataBinding, TCallback : IBas
     lateinit var mCallback: TCallback
 
     @Inject
+    @VisibleForTesting
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     protected var mViewDataBinding: TViewDataBinding? = null

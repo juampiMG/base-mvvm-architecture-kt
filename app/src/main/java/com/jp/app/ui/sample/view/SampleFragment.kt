@@ -3,6 +3,7 @@ package com.jp.app.ui.sample.view
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.annotation.VisibleForTesting
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -73,6 +74,8 @@ class SampleFragment : BaseFragment<SampleFragmentBinding, SampleFragment.Fragme
         recycler_view.adapter = mAdapter
     }
 
+
+    @VisibleForTesting (otherwise = VisibleForTesting.NONE)
     fun getAdapter(): SampleAdapter? {
         return mAdapter
     }
