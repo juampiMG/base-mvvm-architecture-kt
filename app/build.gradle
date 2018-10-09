@@ -24,8 +24,6 @@ android {
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
         testApplicationId rootProject.ext.testApplicationId
 
-        vectorDrawables.useSupportLibrary = true
-
         multiDexEnabled true
 
         javaCompileOptions {
@@ -91,18 +89,11 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-
     implementation deps.app.implementation
     annotationProcessor deps.app.annotationProcessor
     compileOnly deps.app.compileOnly
     testImplementation deps.app.testImplementation
     kapt deps.app.kapt
-
-    implementation("com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:${advrecyclerviewVersion}@aar") {
-        transitive = true
-    }
-
 
 }
 repositories {

@@ -1,8 +1,8 @@
 package com.jp.app.ui.sample.viewModel
 
-import android.arch.lifecycle.MutableLiveData
-import android.databinding.ObservableArrayList
-import android.databinding.ObservableList
+import androidx.lifecycle.MutableLiveData
+import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableList
 import com.jp.app.common.BaseActivity
 import com.jp.app.common.BaseSingleObserver
 import com.jp.app.common.viewModel.BaseViewModel
