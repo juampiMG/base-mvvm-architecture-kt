@@ -1,7 +1,7 @@
 package com.jp.app.ui.navigation.view
 
-import android.arch.lifecycle.ViewModelProvider
-import android.support.v4.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import com.jp.app.common.ViewModelProviderFactory
 import com.jp.app.injector.scope.PerFragment
 import com.jp.app.ui.navigation.viewModel.NavViewModel

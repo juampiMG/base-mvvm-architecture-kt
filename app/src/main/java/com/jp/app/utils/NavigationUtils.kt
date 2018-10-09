@@ -3,8 +3,8 @@ package com.jp.app.utils
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.jp.app.common.view.BaseFragment
 
 object NavigationUtils {

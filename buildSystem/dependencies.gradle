@@ -1,11 +1,13 @@
 ext {
 
     // Android dependencies
-    supportLibraryVersion = '27.1.0'
+    androidMaterialVersion = '1.0.0-rc01'
     servicesVersion = '11.4.2'
-    multidexVersion = '1.0.1'
+    multidexVersion = '2.0.0'               //https://developer.android.com/jetpack/androidx/migrate
     lifecycleVersion = '1.1.0'
     dataBindingVersion = '2.3.3'
+    constraintsLayoutVersion = '1.1.2'      //https://developer.android.com/jetpack/androidx/migrate
+    daggerVersion = '2.16'
 
     // Libraries
     reactiveAndroidVersion = '2.0.1'        // https://github.com/ReactiveX/RxAndroid
@@ -15,8 +17,6 @@ ext {
     glideVersion = '4.8.0'                  // https://github.com/bumptech/glide
     lombokVersion = '1.16.10'               // https://projectlombok.org/setup/android.html
     parcelerVersion = '1.1.8'               // https://github.com/johncarl81/parceler
-    daggerVersion = '2.15'                  // https://github.com/square/dagger
-    constraintsLayoutVersion = '1.1.0'      // https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html
     advrecyclerviewVersion = '0.10.6'       // https://github.com/h6ah4i/android-advancedrecyclerview
     modelmapperVersion = '1.1.0'            // https://github.com/modelmapper/modelmapper
     parcelerVersion= '1.1.9'
@@ -40,14 +40,9 @@ ext {
     deps = [
             app : [
                     implementation: [
-                            "com.android.support:multidex:${multidexVersion}",
-                            "com.android.support:support-v13:${supportLibraryVersion}",
-                            "com.android.support:appcompat-v7:${supportLibraryVersion}",
-                            "com.android.support:design:${supportLibraryVersion}",
-                            "com.android.support:percent:${supportLibraryVersion}",
-                            "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-                            "com.android.support:cardview-v7:${supportLibraryVersion}",
-                            "com.android.support.constraint:constraint-layout:${constraintsLayoutVersion}",
+                            "androidx.multidex:multidex:${multidexVersion}",
+                            "com.google.android.material:material:${androidMaterialVersion}",
+                            "androidx.constraintlayout:constraintlayout:${constraintsLayoutVersion}",
 
                             "com.google.dagger:dagger-android-support:${daggerVersion}",
 
@@ -87,7 +82,6 @@ ext {
                             "org.robolectric:robolectric:${robolectricVersion}",
                             "com.squareup.assertj:assertj-android:${assertjVersion}",
                             "org.robolectric:shadows-multidex:${robolectricVersion}",
-                            "com.android.support:recyclerview-v7:${supportLibraryVersion}",
                             "com.google.dagger:dagger-android-support:${daggerVersion}",
                             "com.nhaarman:mockito-kotlin-kt1.1:${mockitoKotlinVersion}",
                             "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworking}",
@@ -129,7 +123,6 @@ ext {
                             "org.robolectric:robolectric:${robolectricVersion}",
                             "com.squareup.assertj:assertj-android:${assertjVersion}",
                             "org.robolectric:shadows-multidex:${robolectricVersion}",
-                            "com.android.support:recyclerview-v7:${supportLibraryVersion}",
                             "com.google.dagger:dagger-compiler:${daggerVersion}"
                     ],
                     kapt : [
@@ -172,7 +165,6 @@ ext {
                             "org.projectlombok:lombok:${lombokVersion}"
                     ],
                     testImplementation : [
-                            "com.android.support:recyclerview-v7:${supportLibraryVersion}"
                     ],
                     kapt : [
                             "com.google.dagger:dagger-compiler:${daggerVersion}",

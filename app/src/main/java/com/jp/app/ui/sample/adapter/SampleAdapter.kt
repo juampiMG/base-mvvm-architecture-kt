@@ -1,7 +1,7 @@
 package com.jp.app.ui.sample.adapter
 
-import android.support.annotation.VisibleForTesting
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.VisibleForTesting
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

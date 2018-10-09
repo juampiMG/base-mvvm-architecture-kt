@@ -1,6 +1,6 @@
 package com.jp.app.ui.tip.view
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import com.jp.app.BR
