@@ -22,7 +22,7 @@ allprojects {
     ext {
         minSdkVersion = 19
         targetSdkVersion = 24
-        compileSdkVersion = 26
+        compileSdkVersion = 28
         buildToolsVersion = '28.0.2'
 
         androidApplicationId = 'com.jp.app'
