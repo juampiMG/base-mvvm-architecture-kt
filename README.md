@@ -8,7 +8,7 @@ FrameWorks:
 
 Dagger 2 (Dagger Injector)
 
-Rx2AndroidNetworking
+Retrofit 2
 
 Butterknife
 
