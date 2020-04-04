@@ -1,6 +1,5 @@
 package com.jp.app.ui
 
-import com.jp.app.BuildConfig
 import com.jp.app.SampleApplication
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
@@ -16,7 +15,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(constants = BuildConfig::class, sdk = [21], application = SampleApplication::class, packageName = "com.jp.app")
+@Config(sdk = [21], application = SampleApplication::class, packageName = "com.jp.app")
 abstract class BaseTest {
 
     @get:Rule

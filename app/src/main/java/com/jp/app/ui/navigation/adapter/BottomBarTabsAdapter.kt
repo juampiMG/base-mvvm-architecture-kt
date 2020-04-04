@@ -31,15 +31,15 @@ constructor(fm: FragmentManager, numTabs: Int) : FragmentStatePagerAdapter(fm) {
     }
 
 
-    override fun getItem(position: Int): Fragment? {
-        when (position) {
-            0 -> return NavFragment1.newInstance(Bundle())
-            1 -> return NavFragment2.newInstance(Bundle())
-            2 -> return NavFragment3.newInstance(Bundle())
-            3 -> return NavFragment4.newInstance(Bundle())
-            4 -> return NavFragment5.newInstance(Bundle())
+    override fun getItem(position: Int): Fragment {
+        return when (position) {
+            0 -> NavFragment1.newInstance(Bundle())
+            1 -> NavFragment2.newInstance(Bundle())
+            2 -> NavFragment3.newInstance(Bundle())
+            3 -> NavFragment4.newInstance(Bundle())
+            4 -> NavFragment5.newInstance(Bundle())
+            else -> NavFragment1.newInstance(Bundle())
         }
-        return null
     }
 
     override fun getCount(): Int {

@@ -14,7 +14,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
 
     implementation deps.data.implementation
@@ -22,6 +22,7 @@ dependencies {
     compileOnly deps.data.compileOnly
     testImplementation deps.data.testImplementation
     kapt deps.data.kapt
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
 }
 repositories {

@@ -94,6 +94,7 @@ dependencies {
     compileOnly deps.app.compileOnly
     testImplementation deps.app.testImplementation
     kapt deps.app.kapt
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
 }
 repositories {

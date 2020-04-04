@@ -21,6 +21,7 @@ dependencies {
     compileOnly deps.domain.compileOnly
     testImplementation deps.domain.testImplementation
     kapt deps.domain.kapt
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 }
 repositories {
     mavenCentral()
