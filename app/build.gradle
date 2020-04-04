@@ -82,6 +82,25 @@ android {
     dataBinding {
         enabled = true
     }
+
+    flavorDimensions "tier"
+
+    productFlavors {
+        prod {
+            buildConfigField 'String', 'API_URL', '"http://www.speedrun.com/api/v1/"'
+            applicationId rootProject.ext.androidApplicationId
+            buildConfigField "String", "APP_VERSION_NAME", "\"" + rootProject.ext.androidVersionName + "\""
+            dimension "tier"
+        }
+
+        stage {
+            buildConfigField 'String', 'API_URL', '"http://www.speedrun.com/api/v1/"'
+            applicationId rootProject.ext.androidApplicationId + ".stage"
+            buildConfigField "String", "APP_VERSION_NAME", "\"" + rootProject.ext.androidVersionName + "\""
+            dimension "tier"
+        }
+
+    }
 }
 
 dependencies {

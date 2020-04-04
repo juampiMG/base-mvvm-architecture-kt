@@ -1,9 +1,9 @@
-package com.jp.data.remote
+package com.jp.data.network.gateway
 
 import com.jp.data.entity.sample.ResultSampleEntity
 import io.reactivex.Single
 
-interface IRestServices {
 
+interface IAppGateway {
     fun getSamples(): Single<ResultSampleEntity>
 }

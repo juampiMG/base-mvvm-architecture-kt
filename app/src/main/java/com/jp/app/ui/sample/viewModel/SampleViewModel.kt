@@ -1,19 +1,14 @@
 package com.jp.app.ui.sample.viewModel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
-import com.jp.app.common.BaseActivity
-import com.jp.app.common.BaseSingleObserver
+import androidx.lifecycle.MutableLiveData
 import com.jp.app.common.viewModel.BaseViewModel
+import com.jp.app.helper.subscribeSingle
 import com.jp.app.model.SampleView
 import com.jp.app.model.mapper.SampleViewMapper
 import com.jp.app.ui.sample.adapter.SampleAdapter
 import com.jp.domain.interactor.IGetSampleUseCase
-import com.jp.domain.model.SampleDomain
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SampleViewModel
@@ -21,6 +16,7 @@ class SampleViewModel
 constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCallBack {
     @Inject
     lateinit var mGetSampleUseCase: IGetSampleUseCase
+
     @Inject
     lateinit var mSampleViewMapper: SampleViewMapper
 
@@ -42,24 +38,17 @@ constructor() : BaseViewModel(), ISampleViewModel, SampleAdapter.SampleAdapterCa
     }
 
     override fun callGetSamplesUseCase() {
-        isLoading(true)
-        mGetSampleUseCase.execute().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : BaseSingleObserver<List<SampleDomain>>(getContext()) {
-
-                    override fun onSubscribe(d: Disposable) {
-                        addDisposable(d)
-                    }
-
-                    override fun onSuccess(sample: List<SampleDomain>) {
-                        isLoading(false)
-                        addSamples(mSampleViewMapper.transform(sample))
-                    }
-
-                    override fun onError(code: Int, title: String, description: String) {
-                        isLoading(false)
-                        showErrorMessage(title, description, BaseActivity.ActionOnError.CLOSE)
-                    }
-                })
+        addDisposable(mGetSampleUseCase.execute().subscribeSingle(
+                onStart = {
+                    isLoading(true)
+                },
+                onSuccess = {
+                    isLoading(false)
+                    addSamples(mSampleViewMapper.transform(it))
+                },
+                onError = { _, _, _ ->
+                    isLoading(false)
+                }
+        ))
     }
 }

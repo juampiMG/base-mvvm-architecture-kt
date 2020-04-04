@@ -11,6 +11,21 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
     }
+
+    flavorDimensions "tier"
+
+    productFlavors {
+        prod {
+            dimension "tier"
+            buildConfigField 'String', 'API_URL', '"http://www.speedrun.com/api/v1/"'
+            buildConfigField "String", "APP_VERSION_NAME", "\"" + rootProject.ext.androidVersionName + "\""
+        }
+        stage {
+            dimension "tier"
+            buildConfigField 'String', 'API_URL', '"http://www.speedrun.com/api/v1/"'
+            buildConfigField "String", "APP_VERSION_NAME", "\"" + rootProject.ext.androidVersionName + "\""
+        }
+    }
 }
 
 dependencies {
